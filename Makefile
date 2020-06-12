@@ -97,3 +97,7 @@ frontend_test:
 # run frontend tests without watching enabled
 frontend_test_no_watch:
 	docker-compose exec $(FRONTEND_SERVICE) sh -c 'cd /src/frontend && CI=true npm test'
+
+# Confirm availability of 'pre-commit' tool and install Git hooks
+pre_commit:
+	$(if $(shell which pre-commit), $(info "Installing pre-commit git hooks") pre-commit install, $(error "Unable to locate 'pre-commit', please see README for installation instructions"))
