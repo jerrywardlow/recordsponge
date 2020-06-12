@@ -32,8 +32,8 @@ pull:
 push:
 	docker-compose push $(BACKEND_SERVICE)
 
-# pulls, then fires up local dev services
-up: pull
+# Installs Git hooks, pulls, then fires up local dev services
+up: pre_commit pull
 	docker-compose up -d
 
 # brings down local dev services
